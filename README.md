@@ -65,6 +65,17 @@ npx vercel inspect <deployment-url>
 npx vercel logs <deployment-url> --since=1h
 ```
 
+## Twilio human transfer
+
+The standalone Twilio bridge can transfer an active caller to the right live person.
+
+- Default administrative transfer target: `+16136215075`
+- Default technical transfer target: `+13435752183`
+- Optional overrides: `TWILIO_ADMIN_TRANSFER_NUMBER`, `TWILIO_TECHNICAL_TRANSFER_NUMBER`
+- Required for live transfer execution: `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, and `TWILIO_BRIDGE_PUBLIC_URL`
+
+When the live transfer path is not configured, the assistant falls back to verbally offering the phone number instead of attempting a transfer.
+
 ## Deploy on Vercel
 
 1. Create a Vercel project with **Root Directory = `voice-web`**.
