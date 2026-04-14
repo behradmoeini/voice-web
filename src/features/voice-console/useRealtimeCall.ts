@@ -186,6 +186,25 @@ function normalizeSpeech(input: string): string {
     .trim();
 }
 
+function isLikelyTranscriptArtifact(text: string): boolean {
+  const trimmed = text.trim();
+  if (trimmed.length < 12) return false;
+
+  const compact = trimmed.replace(/[\s.,!?;:'"`~()[\]{}<>|\\/+=*_#@؟،؛…-]+/gu, "");
+  const chars = Array.from(compact);
+  if (chars.length >= 12 && new Set(chars).size <= 2) return true;
+
+  const tokens = trimmed.split(/\s+/u).filter(Boolean);
+  if (tokens.length >= 8) {
+    const shortTokens = tokens.filter((token) => Array.from(token).length <= 3);
+    if (shortTokens.length / tokens.length > 0.8 && new Set(shortTokens).size <= 2) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 function isCallerDoneIntent(text: string): boolean {
   const t = normalizeSpeech(text);
   if (!t) return false;
@@ -508,6 +527,10 @@ export function useRealtimeCall() {
 
       if (type === "conversation.item.input_audio_transcription.delta") {
         const text = extractTextFromEvent(event);
+        if (isLikelyTranscriptArtifact(text)) {
+          pushLog(`ignored noisy transcript delta: "${text.slice(0, 80)}"`);
+          return;
+        }
         pushTranscript("user", resolveEventId(event, "user"), text, {
           append: true,
           final: false,
@@ -517,6 +540,10 @@ export function useRealtimeCall() {
 
       if (type === "conversation.item.input_audio_transcription.completed") {
         const text = extractTextFromEvent(event);
+        if (isLikelyTranscriptArtifact(text)) {
+          pushLog(`ignored noisy transcript: "${text.slice(0, 120)}"`);
+          return;
+        }
         pushTranscript("user", resolveEventId(event, "user"), text, {
           append: false,
           final: true,
