@@ -1,25 +1,11 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { createHash, randomUUID } from "node:crypto";
 import { buildSiteAssistantSystemPrompt } from "../server/site-assistant-knowledge.js";
+import { VOICE_CHANNEL_APPEND } from "../shared/voice-prompts.js";
 
 const DEFAULT_REALTIME_MODEL = "gpt-realtime";
 const DEFAULT_REALTIME_VOICE = "marin";
 const MAX_OPENAI_SESSION_ATTEMPTS = 2;
-
-const VOICE_CHANNEL_APPEND = `
-
-VOICE LINE (read aloud by realtime speech). These channel rules override formatting rules above:
-- Keep replies concise and conversational like a live receptionist.
-- Default to one or two short sentences; only add a third when explicitly asked.
-- Do not output markdown, bullet points, code formatting, or emoji.
-- Prefer plain spoken phrasing for navigation directions.
-- When the call begins, greet the caller briefly and invite their first request.
-- Scope lock: only discuss Praxify services, offerings, process, pricing, availability, booking flow, contact, and website navigation.
-- If the caller asks anything unrelated to Praxify, politely refuse and redirect to Praxify topics in one short sentence.
-- Do not provide generic advice, small talk, or non-Praxify guidance.
-- Knowledge fidelity: answer only with facts that are present in the Praxify knowledge prompt. If missing, say: "I only have Praxify website information and do not have that detail."
-- Never invent details, names, numbers, features, guarantees, policies, or timelines.
-`;
 
 type JsonMap = Record<string, unknown>;
 
