@@ -1,0 +1,264 @@
+﻿.page {
+  min-height: calc(100vh - 64px);
+  padding: clamp(1rem, 2.6vw, 2rem);
+  background:
+    radial-gradient(circle at 20% 12%, rgba(58, 193, 170, 0.2), transparent 30%),
+    radial-gradient(circle at 80% 94%, rgba(80, 152, 255, 0.15), transparent 30%),
+    linear-gradient(145deg, #0c141f, #121b2a);
+}
+
+.doc {
+  max-width: 980px;
+  margin: 0 auto;
+  border: 1px solid rgba(130, 161, 224, 0.28);
+  border-radius: 22px;
+  padding: clamp(1rem, 2.4vw, 1.8rem);
+  background: rgba(6, 13, 25, 0.78);
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.32);
+}
+
+.hero {
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid rgba(130, 161, 224, 0.24);
+  padding-bottom: 1rem;
+}
+
+.kicker {
+  margin: 0;
+  color: #9ceedd;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.74rem;
+  font-family: "Space Mono", "IBM Plex Mono", monospace;
+}
+
+.hero h1 {
+  margin: 0.55rem 0 0;
+  line-height: 1.15;
+}
+
+.hero p {
+  margin: 0.75rem 0 0;
+  color: #b6c7e8;
+}
+
+.doc section {
+  margin-top: 1.25rem;
+}
+
+.doc h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.16rem;
+  color: #f1f6ff;
+}
+
+.doc h3 {
+  margin: 0.95rem 0 0.4rem;
+  font-size: 0.94rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #9ed4ff;
+}
+
+.doc p,
+.doc li,
+.doc ol,
+.doc ul,
+.doc td,
+.doc th {
+  color: #dce8ff;
+  line-height: 1.56;
+}
+
+.doc ul,
+.doc ol {
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.callout {
+  margin-top: 0.75rem;
+  border: 1px solid rgba(110, 196, 174, 0.38);
+  border-radius: 12px;
+  padding: 0.72rem 0.8rem;
+  background: rgba(24, 74, 66, 0.2);
+}
+
+.grid3 {
+  margin-top: 0.65rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.grid3 > div {
+  border: 1px solid rgba(130, 161, 224, 0.28);
+  border-radius: 12px;
+  padding: 0.6rem;
+  background: rgba(12, 22, 40, 0.46);
+}
+
+.diagram,
+.code {
+  margin-top: 0.75rem;
+  border: 1px solid rgba(130, 161, 224, 0.26);
+  border-radius: 12px;
+  padding: 0.72rem;
+  background: rgba(8, 14, 28, 0.9);
+  color: #d4e3ff;
+  overflow-x: auto;
+  font-family: "Space Mono", "IBM Plex Mono", monospace;
+  font-size: 0.77rem;
+  line-height: 1.5;
+}
+
+.archDiagram {
+  margin-top: 0.75rem;
+  border: 1px solid rgba(130, 161, 224, 0.26);
+  border-radius: 12px;
+  padding: 0.8rem;
+  background: rgba(8, 14, 28, 0.9);
+}
+
+.archRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 0.6rem;
+  align-items: stretch;
+}
+
+.archNode {
+  border: 1px solid rgba(130, 161, 224, 0.28);
+  border-radius: 10px;
+  background: rgba(12, 22, 40, 0.52);
+  padding: 0.6rem;
+}
+
+.archNode h4 {
+  margin: 0;
+  font-size: 0.86rem;
+  color: #f4f8ff;
+}
+
+.archNode p {
+  margin: 0.45rem 0 0;
+  font-size: 0.8rem;
+  color: #c7dbff;
+}
+
+.archArrow {
+  display: grid;
+  place-items: center;
+  min-width: 120px;
+  border-radius: 9px;
+  padding: 0.32rem 0.45rem;
+  background: rgba(52, 94, 179, 0.2);
+  color: #dce8ff;
+  font-family: "Space Mono", "IBM Plex Mono", monospace;
+  font-size: 0.66rem;
+  text-align: center;
+}
+
+.archBackRow {
+  margin-top: 0.62rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.archBackRow span {
+  border: 1px dashed rgba(130, 161, 224, 0.24);
+  border-radius: 8px;
+  padding: 0.45rem;
+  font-size: 0.76rem;
+  color: #bdd3f8;
+  background: rgba(8, 14, 28, 0.65);
+}
+
+.sequenceDiagram {
+  margin-top: 0.75rem;
+  border: 1px solid rgba(130, 161, 224, 0.26);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.sequenceHeader,
+.sequenceStep {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.sequenceHeader span {
+  padding: 0.5rem 0.55rem;
+  border-right: 1px solid rgba(130, 161, 224, 0.22);
+  background: rgba(52, 94, 179, 0.2);
+  color: #f4f8ff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.sequenceHeader span:last-child {
+  border-right: 0;
+}
+
+.sequenceStep span {
+  padding: 0.46rem 0.55rem;
+  border-top: 1px solid rgba(130, 161, 224, 0.18);
+  border-right: 1px solid rgba(130, 161, 224, 0.18);
+  color: #dce8ff;
+  font-size: 0.78rem;
+  background: rgba(8, 14, 28, 0.88);
+}
+
+.sequenceStep span:last-child {
+  border-right: 0;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.7rem;
+}
+
+.table th,
+.table td {
+  border: 1px solid rgba(130, 161, 224, 0.24);
+  padding: 0.55rem;
+  text-align: left;
+  vertical-align: top;
+  font-size: 0.88rem;
+}
+
+.table th {
+  background: rgba(52, 94, 179, 0.2);
+  color: #f4f8ff;
+}
+
+@media (max-width: 900px) {
+  .grid3 {
+    grid-template-columns: 1fr;
+  }
+
+  .archRow {
+    grid-template-columns: 1fr;
+  }
+
+  .archArrow {
+    min-width: auto;
+  }
+
+  .archBackRow {
+    grid-template-columns: 1fr;
+  }
+
+  .sequenceHeader,
+  .sequenceStep {
+    grid-template-columns: 1fr;
+  }
+
+  .sequenceHeader span,
+  .sequenceStep span {
+    border-right: 0;
+  }
+}
