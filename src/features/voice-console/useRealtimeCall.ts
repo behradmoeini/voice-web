@@ -1,7 +1,8 @@
-﻿import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from "react";
 import { initialRealtimeCallState, realtimeCallReducer } from "./callReducer";
 import { type CallPhase, type SessionMeta, type TranscriptSpeaker } from "./callTypes";
 import { useAudioMeter } from "./useAudioMeter";
+import { OPENING_CALL_INSTRUCTIONS } from "../../../shared/voice-prompts";
 
 type SessionDebug = {
   requestId?: string;
@@ -1029,8 +1030,7 @@ export function useRealtimeCall() {
       sendClientEvent({
         type: "response.create",
         response: {
-          instructions:
-            "Start the call now. Say one short greeting as Praxify receptionist, then ask: Which language do you prefer to continue in? Offer simple options: English, French, or Persian. Then ask a second simple question: Are you calling about booking, services, pricing, FAQ, or contact?",
+          instructions: OPENING_CALL_INSTRUCTIONS,
         },
       });
 
